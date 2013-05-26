@@ -67,5 +67,9 @@ Getting started
 ###Adding the component to Virality###
 
     define(["virality", "components/fps"], function(v) {
+      v.init(640, 480)
+       .background("#000")
+       .start();
+      
       v.components(fps);
     });
