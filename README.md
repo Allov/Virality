@@ -11,6 +11,8 @@ Getting started
 - __app__
   - components
       - myfirstcomponent.js (optional)
+  - libs
+      - __require.js__
   - __virality.js__
   - main.js
 - __assets__
