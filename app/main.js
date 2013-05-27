@@ -1,14 +1,21 @@
-define(["virality"], function(v) {
-    v.config({ debug: true });
-    require(["components/heartbeat", "components/sprite", "components/starfield", "components/fps"], function(h, sprite, starfield, fps) {
-        v.init(640, 480)
+define(["virality", "components/heartbeat", "components/sprite", 
+        "components/starfield", "components/fps"],
+    function(v, h, sprite, starfield, fpsCounter) {
+    
+        // Starting Virality.
+        v.config({ debug: true })
+         .init(640, 480)
          .background("#000")
          .start();
         
-        fps.config({ x: v.viewport.w - 100 });
+        // Adding a Starfield.
         v.components(starfield);
+
+        // Creating a new entity that is also a component.
+        var fps = new fpsCounter();
         v.components(fps);
          
+        // Handles pause and unpause.
         document.getElementById("pause")
                 .onclick = function() {
                     v.pause();
@@ -18,5 +25,5 @@ define(["virality"], function(v) {
                         this.innerHTML = "Pause";
                     }
                 };
+    
     });
-});
