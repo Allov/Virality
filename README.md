@@ -61,3 +61,20 @@ Getting started
       
       v.components(new fps());
     });
+    
+Features
+--------
+
+###Assets###
+Virality comes with an asset load. Nothing fancy there. It prevents loading the same resource twice. It supports audio and images at the moment.
+
+    // Loading an image and keeping the reference.
+    var myimage = v.load("myimage.png");
+    
+    // Loading a sound and accessing it later.
+    v.load({ name: "mysound", media: "mysound.ogg" });
+    var mysound = v.assets["mysound"];
+    mysound.play();
+
+
+    
