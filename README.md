@@ -76,5 +76,22 @@ Virality comes with an asset load. Nothing fancy there. It prevents loading the 
     var mysound = v.assets["mysound"];
     mysound.play();
 
+###Components###
+Components may be created and inserted in Virality's loop. It currently support `name`, `init`, `update` and `render`.
+
+    v.components({
+      name: "My Component",
+      init: function() {
+        // will be called once inside v.components()
+      },
+      update: function(elapsed) {
+        // called every frame with time elapsed since the last call.
+      },
+      render: function(context, elapsed) {
+        // called every frame with time elapsed since the last call. It comes with the buffer 2d context.
+      }
+    });
+
+    
 
     
