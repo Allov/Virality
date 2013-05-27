@@ -17,8 +17,9 @@ Getting started
   - main.js
 - __assets__
   - sprites.png (optional)
+- index.html
 
-###The view###
+###index.html###
 
     <html>
     <head>
@@ -34,44 +35,29 @@ Getting started
     </body>
     </html>
     
-###The main.js###
+###app/components/fps.js###
 
     define(["virality"], function(v) {
-      v.init(640, 480)
-       .background("#000")
-       .start();
-    });
-    
-###Creating a component###
-
-    define(["virality"], function(v) {
-        var options = {
-            x: 30,
-            y: 30
-        };
-        var fps = {
-            config: function(settings) {
-                for(var i in settings) {
-                    options[i] = settings[i];
-                }
-            },
-            name: "fpsCounter",
-            render: function(context, elapsed) {
+        var fps = function() {
+            var self = this;
+            self.name = "fpsCounter";
+            self.render = function(context, elapsed) {
                 context.font = "30px Trebuchet MS";
                 context.fillStyle = 'white';
-                context.fillText(v.fps() + " FPS", options.x, options.y);
+                context.fillText(v.fps() + " FPS", 30, 30);
             }
         };
         
         return fps;
     });
 
-###Adding the component to Virality###
+###app/main.js###
 
-    define(["virality", "components/fps"], function(v) {
-      v.init(640, 480)
+    define(["virality", "components/fps"], function(v, fps) {
+      v.config({ debug: true })
+       .init(640, 480)
        .background("#000")
        .start();
       
-      v.components(fps);
+      v.components(new fps());
     });
